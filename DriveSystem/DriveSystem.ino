@@ -1,5 +1,6 @@
 #include <Wire.h>
 #include <Adafruit_MCP4725.h>
+#include <Encoder.h>
 
 /*
 
@@ -26,6 +27,9 @@
 
 Adafruit_MCP4725 dac;
 
+Encoder leftWheel(ENCODER_LEFT_A_PIN, ENCODER_LEFT_B_PIN);
+Encoder rightWheel(ENCODER_RIGHT_A_PIN, ENCODER_RIGHT_B_PIN);
+
 void setup() {
   Serial.begin(115200);
 
@@ -35,11 +39,6 @@ void setup() {
 
   pinMode(BRAKE_A_PIN, OUTPUT);
   pinMode(BRAKE_B_PIN, OUTPUT);
-
-  pinMode(ENCODER_LEFT_A_PIN, INPUT);
-  pinMode(ENCODER_LEFT_B_PIN, INPUT);
-  pinMode(ENCODER_RIGHT_A_PIN, INPUT);
-  pinMode(ENCODER_RIGHT_B_PIN, INPUT);
 
   // For Adafruit MCP4725A1 the address is 0x62 (default) or 0x63 (ADDR pin tied to VCC)
   // For MCP4725A0 the address is 0x60 or 0x61

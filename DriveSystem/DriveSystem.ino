@@ -1,5 +1,7 @@
 #include <Wire.h>
 #include <Adafruit_MCP4725.h>
+//https://www.pjrc.com/teensy/td_libs_Encoder.html
+#define ENCODER_OPTIMIZE_INTERRUPTS
 #include <Encoder.h>
 
 /*
@@ -10,6 +12,10 @@
    Encoders
 
 */
+
+//#define DEBUG
+
+#define LOOP_RATE 10 //Hz
 
 #define STEER_DIRECTION_PIN 4
 #define STEER_STEP_PIN 5
@@ -47,6 +53,13 @@ void setup() {
 
 }
 
+unsigned long prevRateTime = 0;
 void loop() {
-  // put your main code here, to run repeatedly:
+  if((millis() - prevRateTime) > (1000 / LOOP_RATE)) {
+    #ifdef DEBUG
+      Serial.print("Left Encoder: "); Serial.println(leftWheel.read());
+      Serial.print("Right Encoder: "); Serial.println(rightWheel.read());
+      Serial.println();
+    #endif
+  }
 }

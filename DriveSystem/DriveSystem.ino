@@ -19,7 +19,6 @@
 
 #define STEER_DIRECTION_PIN 4
 #define STEER_STEP_PIN 5
-#define STEER_ENABLE_PIN 6
 #define STEER_POT_PIN A0
 
 #define BRAKE_A_PIN 7
